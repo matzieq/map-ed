@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="form-container">
+      <form id="form">
+        <label for="width">WIDTH</label>
+        <input
+          id="map-width"
+          name="width"
+          type="number"
+          min="0"
+          max="200"
+          value="20"
+        />
+        <label for="height">HEIGHT</label>
+        <input
+          id="map-height"
+          name="height"
+          type="number"
+          min="0"
+          max="200"
+          value="20"
+        />
+        <button class="btn" type="submit">NEW</button>
+      </form>
+      <button id="clear-button" class="btn btn-danger">CLEAR</button>
+      <button id="generate-button" class="btn btn-success">GENERATE</button>
+    </div>
+
+    <div id="map"></div>
+    <script src="main.js"></script>
+  </body>
+</html>
