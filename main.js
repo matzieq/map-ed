@@ -15,6 +15,29 @@ const setMapDimensions = (newDim) => {
   mapDimensions = { ...mapDimensions, ...newDim };
 };
 
+const copyToClipboard = (str) => {
+  const el = document.createElement("textarea");
+  el.value = str;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand("copy");
+  document.body.removeChild(el);
+};
+
+const generateDungeonArray = () => {
+  const dungeonArray = [];
+  document.querySelectorAll(".row").forEach((row, index) => {
+    dungeonArray[index] = [];
+    row
+      .querySelectorAll(".tile")
+      .forEach((tile) =>
+        dungeonArray[index].push(parseInt(tile.dataset.value))
+      );
+  });
+
+  return dungeonArray;
+};
+
 function generateNewMap() {
   let mapHtml = "";
   console.log(mapDimensions);
@@ -83,4 +106,8 @@ window.addEventListener("mouseup", () => {
 
 clearButton.addEventListener("click", () => {
   document.querySelectorAll(".tile").forEach((tile) => eraseTile(tile));
+});
+
+generateButton.addEventListener("click", () => {
+  copyToClipboard(JSON.stringify(generateDungeonArray()));
 });
